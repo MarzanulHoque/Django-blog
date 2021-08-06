@@ -1,3 +1,6 @@
+{% extends 'theblog/base.html' %}
+{% block content%}
+  Blog By {{ post.author }}
 <h3>Hello From Details</h3>
 
 
@@ -5,4 +8,6 @@
   {{ post.author }}
   {{ post.body }}
 
-  <a href="{% url 'home' %}">Back</a>
+  <a href="{% url 'home' %}" class="btn btn-info">Back</a>
+
+  {% endblock %}
