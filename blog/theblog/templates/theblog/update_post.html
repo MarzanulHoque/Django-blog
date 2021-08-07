@@ -1,0 +1,18 @@
+{% extends 'theblog/base.html' %}
+
+{% block title %}
+  Blog By {{ post.author }}
+{% endblock %}
+
+{% block content%}
+
+<h3>UPDATE POST.....</h3>
+<div class="form-group">
+    <form  method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-info">Update</button>
+    </form>
+</div>
+
+  {% endblock %}

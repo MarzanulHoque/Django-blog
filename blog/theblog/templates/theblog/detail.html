@@ -5,14 +5,16 @@
 {% endblock %}
 
 {% block content%}
-
-<h3>Hello From Details</h3>
-
-
-  {{ post.title }}
-  {{ post.author }}
+  <h3>
+    {{ post.title }}
+  </h3>
+  <small>
+  Posted By - {{ post.author }} - <a href="{% url 'update_post' post.id %}">(Edit)</a>
+  </small> <br>
+  <hr>
   {{ post.body }}
-
-  <a href="{% url 'home' %}" class="btn btn-info">Back</a>
+  <br>
+  <br>
+  <a href="{% url 'home' %}" class="btn btn-sm btn-info">Back</a>
 
   {% endblock %}
