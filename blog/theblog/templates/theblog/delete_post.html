@@ -8,15 +8,20 @@
 
 <h3>DELETE POST.....</h3>
  <h4> THe Post : {{ post.title }}</h4>
-<div class="form-group">
-    <form  method="post">
-      {% csrf_token %}
-      <strong> Are you sure wanna delete ?  </strong>
-      <br>
-      <br>
-      <a href="{% url 'article-detail' post.id %}"class="btn btn-info">Cancel</a>
-      <button class="ml-4 btn btn-danger">Delete</button>
-    </form>
-</div>
+ {% if user.is_authenticated %}
+    <div class="form-group">
+        <form  method="post">
+          {% csrf_token %}
+          <strong> Are you sure wanna delete ?  </strong>
+          <br>
+          <br>
+          <a href="{% url 'article-detail' post.id %}"class="btn btn-info">Cancel</a>
+          <button class="ml-4 btn btn-danger">Delete</button>
+        </form>
+    </div>
+     {% else %}
+      <strong> Please Login to Perform operataion .....</strong>
+
+      {% endif %}
 
   {% endblock %}

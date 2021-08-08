@@ -8,11 +8,14 @@
   <h3>
     {{ post.title }}
   </h3>
-  Posted By - {{ post.author }} - <small> {{ post.post_date }} </small>
+  Posted By - {{ post.author }}<small> {{ post.post_date }} </small>
+  {% if user.is_authenticated %}
   <small>
-  <a href="{% url 'update_post' post.id %}">(Edit)</a>
+    - <a href="{% url 'update_post' post.id %}">(Edit)</a>
   <a href="{% url 'delete_post' post.id %}">(Delete)</a>
-  </small> <br>
+  </small>
+  {% endif %}
+   <br>
   <hr>
   {{ post.body }}
   <br>

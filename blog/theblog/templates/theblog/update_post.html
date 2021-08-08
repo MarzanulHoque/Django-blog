@@ -7,12 +7,15 @@
 {% block content%}
 
 <h3>UPDATE POST.....</h3>
-<div class="form-group">
-    <form  method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button class="btn btn-info">Update</button>
-    </form>
-</div>
-
+{% if user.is_authenticated %}
+  <div class="form-group">
+      <form  method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-info">Update</button>
+      </form>
+  </div>
+  {% else %}
+    <strong> Please Login  to perform this operation ...  </strong>
+  {% endif %}
   {% endblock %}
