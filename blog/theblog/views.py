@@ -12,6 +12,13 @@ class HomeView(ListView):
     template_name="theblog/home.html"
     ordering=['post_date']
 
+def CategoryView(request,cat):
+
+    catlist=Post.objects.filter(category=cat)
+
+    return render(request,'theblog/categories.html',{'cat':cat,'catlist':catlist})
+
+
 class ArticleDetailView(DetailView):
     model = Post
     template_name="theblog/detail.html"
@@ -20,7 +27,7 @@ class AddPostView(CreateView):
     model = Post
     template_name="theblog/add_post.html"
     form_class = PostForm
-    
+
 class AddCategoryView(CreateView):
     model = Category
     template_name="theblog/add_category.html"
