@@ -12,7 +12,7 @@
     {% for post in object_list %}
     <li>
       <a href="{% url 'article-detail' post.id %}"> {{ post.title }}  </a>
-      <small> - {{ post.author }} - {{ post.post_date}}</small>
+      <small> - {{ post.category }} - {{ post.author }} - {{ post.post_date}}</small>
       {% if user.is_authenticated %}
        <small>
             - <a href="{% url 'update_post' post.id %}">(Edit)</a>
@@ -20,7 +20,7 @@
        </small>
        {% endif %}
         <br>
-      {{ post.body|slice:":200" }}<br>
+      {{ post.body|slice:":200"|safe }}<br>
     </li>
     {% endfor %}
 </ul>

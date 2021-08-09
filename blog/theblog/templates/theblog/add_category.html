@@ -1,0 +1,21 @@
+{% extends 'theblog/base.html' %}
+
+{% block title%}
+  Create a new Category
+{% endblock %}
+
+{% block content%}
+
+<h3>Hello From Add Category</h3>
+{% if user.is_authenticated %}
+  <div class="form-group">
+      <form  method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-info">Add Category</button>
+      </form>
+  </div>
+  {% else %}
+    <strong> Please Login To Perform operation</strong>
+  {% endif %}
+{% endblock %}

@@ -6,7 +6,7 @@
 
 {% block content%}
   <h3>
-    {{ post.title }}
+    {{ post.title }} - {{ post.category }} - 
   </h3>
   Posted By - {{ post.author }}<small> {{ post.post_date }} </small>
   {% if user.is_authenticated %}
@@ -17,7 +17,7 @@
   {% endif %}
    <br>
   <hr>
-  {{ post.body }}
+  {{ post.body|safe }}
   <br>
   <br>
   <a href="{% url 'home' %}" class="btn btn-sm btn-info">Back</a>
