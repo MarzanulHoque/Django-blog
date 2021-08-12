@@ -1,0 +1,20 @@
+{% extends 'theblog/base.html' %}
+
+{% block title %}
+  Blog Categories
+{% endblock %}
+
+{% block content%}
+      <h3>
+        Categories ...
+      </h3>
+
+      <ol>
+      {% for item in catlistmenu %}
+            <li>
+                {{ item }}
+            </li>
+      {% endfor %}
+      </ol>
+
+  {% endblock %}
