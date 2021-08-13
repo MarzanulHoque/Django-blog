@@ -14,10 +14,12 @@
       <a href="{% url 'article-detail' post.id %}"> {{ post.title }}  </a>
       <small> - <a href="{% url 'categories' post.category %}">{{ post.category }}</a> - {{ post.author }} - {{ post.post_date}}</small>
       {% if user.is_authenticated %}
-       <small>
-            - <a href="{% url 'update_post' post.id %}">(Edit)</a>
-          <a href="{% url 'delete_post' post.id %}">(Delete)</a>
-       </small>
+          {% if user.id == post.author.id %}
+             <small>
+                  - <a href="{% url 'update_post' post.id %}">(Edit)</a>
+                <a href="{% url 'delete_post' post.id %}">(Delete)</a>
+             </small>
+          {% endif %}
        {% endif %}
         <br>
       {{ post.body|slice:":200"|safe }}<br>

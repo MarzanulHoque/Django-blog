@@ -15,6 +15,10 @@
         <button class="btn btn-info">Post</button>
       </form>
   </div>
+  <script type="text/javascript">
+    name = "{{ user.id }}" ;
+      document.getElementById("user").value=name ;
+  </script>
   {% else %}
     <strong> Please Login To Perform operation</strong>
   {% endif %}

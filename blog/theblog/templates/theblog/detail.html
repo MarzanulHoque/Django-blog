@@ -1,7 +1,7 @@
 {% extends 'theblog/base.html' %}
 
 {% block title %}
-  Blog By {{ post.author }}
+  {{ post.title_tag }} Blog By {{ post.author }}
 {% endblock %}
 
 {% block content%}
@@ -13,10 +13,12 @@
       </h6>
       Posted By - {{ post.author }}<small> {{ post.post_date }} </small>
       {% if user.is_authenticated %}
-      <small>
-        - <a href="{% url 'update_post' post.id %}">(Edit)</a>
-      <a href="{% url 'delete_post' post.id %}">(Delete)</a>
-      </small>
+          {% if user.id == post.author.id %}
+            <small>
+              - <a href="{% url 'update_post' post.id %}">(Edit)</a>
+                <a href="{% url 'delete_post' post.id %}">(Delete)</a>
+            </small>
+            {% endif %}
       {% endif %}
        <br>
       <hr>
