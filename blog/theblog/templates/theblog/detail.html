@@ -11,7 +11,7 @@
       <h6>
         {{ post.category }}
       </h6>
-      Posted By - {{ post.author }}<small> {{ post.post_date }} </small>
+      Posted By - {{ post.author.first_name }} {{ post.author.last_name }} <small>{{ post.post_date }} </small>
       {% if user.is_authenticated %}
           {% if user.id == post.author.id %}
             <small>
@@ -41,9 +41,9 @@
                 {% else %}
                   <small> <a href="{% url 'login' %}">Login</a> to Like </small>
                 {% endif %}
+                - {{ total_likes }} Likes
           </form>
 
-          - {{ total_likes }} Likes
       <br>
       <br>
       <a href="{% url 'home' %}" class="btn btn-sm btn-info">Back</a>

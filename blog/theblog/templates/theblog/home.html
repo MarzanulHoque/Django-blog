@@ -12,7 +12,7 @@
     {% for post in object_list %}
     <li>
       <a href="{% url 'article-detail' post.id %}"> {{ post.title }}  </a>
-      <small> - <a href="{% url 'categories' post.category %}">{{ post.category }}</a> - {{ post.author }} - {{ post.post_date}}</small>
+      <small> - <a href="{% url 'categories' post.category %}">{{ post.category }}</a> - {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date}}</small>
       {% if user.is_authenticated %}
           {% if user.id == post.author.id %}
              <small>
